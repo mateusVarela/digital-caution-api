@@ -53,6 +53,32 @@ class CautionControleller {
       })
     })
   }
+
+  async deleteCaution(req, res) {
+    try {
+      const { id } = req.body
+
+      CautionSchema.findByIdAndDelete(id, error => {
+        if (error) {
+          return res.status(400).json({
+            error: true,
+            message: `Erro ao tentar deletar cautela no mongo. erro: ${error}`
+          })
+        }
+
+        return res.status(200).json({
+          error: false,
+          cautionDeleted: true,
+          idCaution: id
+        })
+      })
+    } catch (error) {
+      return res.status(400).json({
+        error: true,
+        message: `Erro ao tentar deletar cautela no mongo. erro: ${error}`
+      })
+    }
+  }
 }
 
 module.exports = new CautionControleller()

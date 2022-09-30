@@ -12,4 +12,9 @@ routes.post('/cautionRegister', CautionController.saveCaution)
  */
 routes.get('/findAllCautions', CautionController.findAllCautions)
 
+/**
+ * Route to delete onw caution.
+ */
+routes.post('/deleteCaution', CautionController.deleteCaution)
+
 module.exports = routes
